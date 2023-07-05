@@ -3,13 +3,13 @@ import { Link, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { BsClockHistory, BsClock, BsPeople } from "react-icons/bs";
 import Layout from "../components/Layout";
+import slugify from "slugify";
 
 const RecipeTemplate = ({ data }) => {
   const {
     title,
     servings,
     prepTime,
-    feature,
     cookTime,
     image,
     content,
@@ -49,8 +49,10 @@ const RecipeTemplate = ({ data }) => {
               <p className="recipe-tags">
                 Tgas:{" "}
                 {tags.map((tag, i) => {
+                  const tagSlug = slugify(tag, { lower: true });
+
                   return (
-                    <Link to={`${tag}`} key={i}>
+                    <Link to={`/tags/${tagSlug}`} key={i}>
                       {tag}
                     </Link>
                   );
