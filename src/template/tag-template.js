@@ -2,17 +2,20 @@ import { graphql } from "gatsby";
 import React from "react";
 import RecipesList from "../components/RecipesList";
 import Layout from "../components/Layout";
+import { Seo } from "../components/seo";
 
 const TagTemplate = ({ data, pageContext }) => {
   const recipes = data.allContentfulRecipe.nodes;
   return (
     <Layout>
-      <main className="page">
-        <h2>{pageContext.tag}</h2>
-        <div className="tag-recipes">
-          <RecipesList recipes={recipes} />
-        </div>
-      </main>
+      <Seo title="Tags">
+        <main className="page">
+          <h2>{pageContext.tag}</h2>
+          <div className="tag-recipes">
+            <RecipesList recipes={recipes} />
+          </div>
+        </main>
+      </Seo>
     </Layout>
   );
 };
