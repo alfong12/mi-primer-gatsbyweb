@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import { graphql } from "gatsby";
 import RecipesList from "../components/RecipesList";
+import { Seo } from "../components/seo";
 
 const Contacts = ({
   data: {
@@ -83,3 +84,5 @@ export const query = graphql`
 `;
 
 export default Contacts;
+
+export const Head = () => <Seo title="Contact" />;
